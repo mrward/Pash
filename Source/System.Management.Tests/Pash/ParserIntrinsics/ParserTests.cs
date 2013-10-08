@@ -261,6 +261,29 @@ if ($true)
             AssertIsValidInput(@"$foo.bar -or $true");
         }
 
+        [Test]
+        public void TrapStatementWithEmptyStatementFollowedBySemiColonInsideStatementBlock()
+        {
+            AssertIsValidInput(@"trap { ; }");
+        }
+
+        [Test]
+        public void TrapStatementWithEmptyStatementFollowedBySemiColonInsideMultilineStatementBlock()
+        {
+            AssertIsValidInput(@"
+trap
+{
+    ;
+}
+");
+        }
+
+        [Test]
+        public void IfStatementWithEmptyStatementFollowedBySemiColonInsideStatementBlock()
+        {
+            AssertIsValidInput(@"if ($true) { ; }");
+        }
+
         static void AssertIsValidInput(string input)
         {
             var parseTree = PowerShellGrammar.Parser.Parse(input);

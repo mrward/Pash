@@ -512,7 +512,7 @@ namespace Pash.ParserIntrinsics
 #else
             // There's a bug in the language spec here. See https://github.com/Pash-Project/Pash/issues/7
             statement_list.Rule =
-                MakeListRule(statement_list, statement_terminators, statement, TermListOptions.AllowTrailingDelimiter | TermListOptions.PlusList);
+                MakeListRule(statement_list, statement_terminators, statement, TermListOptions.AllowTrailingDelimiter | TermListOptions.StarList);
 #endif
 
             ////        statement:

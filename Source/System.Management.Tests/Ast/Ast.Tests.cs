@@ -1417,5 +1417,15 @@ ls
 
             Assert.IsNotNull(throwStatementAst.Pipeline);
         }
+
+        [TestCase(@"if ($true) {;}")]
+        [TestCase(@"if ($true) {; ;}")]
+        [TestCase(@"if ($true) {;;;}")]
+        public void SemiColonInsideIfStatementBlock(string input)
+        {
+            IfStatementAst ifStatementAst = ParseStatement(input);
+
+            Assert.AreEqual(0, ifStatementAst.Clauses[0].Item2.Statements.Count);
+        }
     }
 }
