@@ -117,6 +117,7 @@ namespace Pash.Implementation
             {
                 curCommand.ProcessRecords();
                 curCommand.EndProcessing();
+                curCommand.ProcessRedirects();
             }
         }
 
